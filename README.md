@@ -17,7 +17,7 @@ The second part is a C library (header / implementation) that makes interacting 
 
 ## Using the libGDX texture packer
 
-Please read [this well written guide](https://github.com/libgdx/libgdx/wiki/Texture-packer) on how to use the libGDX texture packer. It is very simple to use. [Download](https://libgdx.badlogicgames.com/tools.html) the standalone build and run it like so:
+Please read [this well written guide](https://github.com/libgdx/libgdx/wiki/Texture-packer) on how to use the libGDX texture packer. It is very simple to use. The binary `runnable-texturepacker.jar` is included in the root of this repo, or [download](https://libgdx.badlogicgames.com/tools.html) the latest standalone build version and run it like so:
 
 ```
 // *NIX (OS X/Linux)
