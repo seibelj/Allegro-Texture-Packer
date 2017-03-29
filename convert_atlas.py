@@ -105,9 +105,6 @@ for line in atlas_text.splitlines():
 
     fsm['previous_line'] = line
 
-#print("All done! Results:")
-#pprint(fsm['image_info'])
-
 # Now, we write out new file
 allegro_atlas_abs_file_name = "{}/{}.allegro.atlas".format(sys.argv[1], atlas_file.replace('.atlas', ''))
 
