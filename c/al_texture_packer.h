@@ -14,8 +14,13 @@ void al_init_texture_packer(const char *pack_file_path, const char *pack_file_na
 /*
 All images must be loaded before using them. Use the returned
 AL_PACKED_IMAGE_ID value in subsequent drawing and bitmap calls.
+
+Pass in the image name without extension. Look in the .allegro.atlas file
+to see the names of images in brackets.
+
+Return value of -1 means it couldn't find the image.
 */
-AL_PACKED_IMAGE_ID al_load_image(const char *file_name);
+AL_PACKED_IMAGE_ID al_load_packed_image(const char *file_name);
 
 /*
 Like al_draw_bitmap
