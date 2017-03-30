@@ -114,10 +114,12 @@ if os.path.exists(allegro_atlas_abs_file_name):
     os.remove(allegro_atlas_abs_file_name)
 
 f = open(allegro_atlas_abs_file_name, 'w')
-f.write('files={}\n\n'.format(all_file_names))
 
 # Iterate through all the images
+file_count = 0
+image_count = 0
 for fn in fsm['image_info']:
+    file_count += 1
     for image_name in fsm['image_info'][fn]:
         f.write('[{}]\n'.format(image_name))
         f.write('file={}\n'.format(fn))
@@ -126,7 +128,13 @@ for fn in fsm['image_info']:
         f.write('y={}\n'.format(content['y']))
         f.write('w={}\n'.format(content['w']))
         f.write('h={}\n'.format(content['h']))
+        f.write('id={}\n'.format(image_count))
+        image_count += 1
 
+f.write('\n[file_metadata]\n'.format(all_file_names))
+f.write('files={}\n'.format(all_file_names))
+f.write('total_files={}\n'.format(file_count))
+f.write('total_images={}\n'.format(image_count))
 f.close()
 
 print("\nSuccessfully processed atlas!\n\nCreated {}\n".format(allegro_atlas_abs_file_name))
