@@ -112,6 +112,53 @@ void al_draw_packed_bitmap(AL_PACKED_IMAGE_ID p_img_id, float dx, float dy, int 
     );
 }
 
+void al_draw_tinted_packed_bitmap(AL_PACKED_IMAGE_ID p_img_id, ALLEGRO_COLOR tint,
+    float dx, float dy, int flags) {
+
+    int p_img_int = (int)p_img_id;
+
+    al_draw_tinted_bitmap_region(
+        packed_image_file_array[packed_image_array[p_img_int].file_idx].bitmap,
+        tint,
+        packed_image_array[p_img_int].x,
+        packed_image_array[p_img_int].y,
+        packed_image_array[p_img_int].w,
+        packed_image_array[p_img_int].h,
+        dx, dy, flags
+    );
+}
+
+void al_draw_tinted_scaled_rotated_packed_bitmap(AL_PACKED_IMAGE_ID p_img_id,
+    ALLEGRO_COLOR tint,
+    float cx, float cy, float dx, float dy, float xscale, float yscale,
+    float angle, int flags) {
+
+    int p_img_int = (int)p_img_id;
+
+    al_draw_tinted_scaled_rotated_bitmap_region(
+        packed_image_file_array[packed_image_array[p_img_int].file_idx].bitmap,
+        packed_image_array[p_img_int].x,
+        packed_image_array[p_img_int].y,
+        packed_image_array[p_img_int].w,
+        packed_image_array[p_img_int].h,
+        tint,
+        cx, cy, dx, dy, xscale, yscale,
+        angle, flags
+    );
+}
+
+ALLEGRO_BITMAP *al_create_packed_bitmap(AL_PACKED_IMAGE_ID p_img_id) {
+    
+    int p_img_int = (int)p_img_id;
+
+    return al_create_sub_bitmap(
+        packed_image_file_array[packed_image_array[p_img_int].file_idx].bitmap,
+        packed_image_array[p_img_int].x,
+        packed_image_array[p_img_int].y,
+        packed_image_array[p_img_int].w,
+        packed_image_array[p_img_int].h
+    );
+}
 
 void al_destroy_texture_packer() {
     if (!has_init) {
